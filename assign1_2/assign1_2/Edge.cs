@@ -16,9 +16,9 @@ namespace assign1_2
                 Id = id;
             }
 
-            public double Node1 { get; set; }
-            public double Node2 { get; set; }
-            public double Cost { get; set; }
+            public int Node1 { get; set; }
+            public int Node2 { get; set; }
+            public int Cost { get; set; }
             public int Id { get; set; }
 
 
