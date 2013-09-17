@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assign1_2
 {
-    class UnionFind
+    public class UnionFind
     {
 
         private int[] parent;
@@ -24,6 +24,7 @@ namespace assign1_2
 
         public int GetRoot(int element)
         {
+            //TODO add Path compression
             int el = element;
             while (parent[el] != el)
             {
@@ -35,6 +36,7 @@ namespace assign1_2
         
         public int GetRoot(int element, out int el_rank)
         {
+            //TODO add Path compression
             int el = element;
             while (parent[el] != el)
             {

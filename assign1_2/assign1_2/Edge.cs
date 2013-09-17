@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace assign1_2
 {
-    class Edge
+    public class Edge
     {
         public Edge(int id, int node1, int node2,int cost)
             {
