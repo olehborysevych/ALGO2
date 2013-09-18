@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using assign1_2;
 using System.IO;
 
-namespace assign2_1
+namespace assign2_2
 {
     class Program
     {
@@ -32,7 +32,7 @@ namespace assign2_1
             StreamReader sr = new StreamReader(fs);
             string sTemp = sr.ReadLine();
             nNodes = Int32.Parse(sTemp);
-            nEdges = nNodes*nNodes;
+            nEdges = nNodes * nNodes;
 
             nodes = new bool[nNodes];
 
@@ -69,7 +69,7 @@ namespace assign2_1
                     }
                     else
                     {
-                        Console.WriteLine ("Max spacing Edge:" + edge.ToString());
+                        Console.WriteLine("Max spacing Edge:" + edge.ToString());
                         break;
                     }
                 }
