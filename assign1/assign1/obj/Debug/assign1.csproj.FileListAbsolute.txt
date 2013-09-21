@@ -5,3 +5,4 @@ C:\Users\Oleg\Documents\GitHub\ALGO2\assign1\assign1\bin\Debug\assign1.exe
 C:\Users\Oleg\Documents\GitHub\ALGO2\assign1\assign1\bin\Debug\assign1.pdb
 C:\Users\Oleg\Documents\GitHub\ALGO2\assign1\assign1\obj\Debug\assign1.exe
 C:\Users\Oleg\Documents\GitHub\ALGO2\assign1\assign1\obj\Debug\assign1.pdb
+C:\Users\Oleg\Documents\GitHub\ALGO2\assign1\assign1\obj\Debug\assign1.csprojResolveAssemblyReference.cache

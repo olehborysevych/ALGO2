@@ -12,17 +12,11 @@ namespace assign2_2
     {
         static void Main(string[] args)
         {
-            int nEdges = 0;
-            int nNodes;
-            const int nClusters = 4;
-
-            List<Edge> edges = new List<Edge>();
-            bool[] nodes;
             FileStream fs;
             try
             {
-                fs = File.OpenRead(@".\data\clustering1.txt");
-                //fs = File.OpenRead(@".\data\test_3.txt");
+                fs = File.OpenRead(@".\data\clustering_big.txt");
+                //fs = File.OpenRead(@".\data\test6.txt");
             }
             catch (FileNotFoundException ex)
             {
@@ -31,52 +25,67 @@ namespace assign2_2
             }
             StreamReader sr = new StreamReader(fs);
             string sTemp = sr.ReadLine();
-            nNodes = Int32.Parse(sTemp);
-            nEdges = nNodes * nNodes;
+            var config_parts = sTemp.Split();
 
-            nodes = new bool[nNodes];
+            int nNodes = Int32.Parse(config_parts[0]);
+            int nBits = Int32.Parse(config_parts[1]);
 
+            Dictionary<int, int> nodes = new Dictionary<int, int>();
             UnionFind uf = new UnionFind(nNodes);
 
             string sEdge = sr.ReadLine();
+            int duplicate = 0;
             int i = 0;
             while (!String.IsNullOrEmpty(sEdge))
             {
-                var words = sEdge.Split();
-                edges.Add(new Edge(i++, Int32.Parse(words[0]) - 1, Int32.Parse(words[1]) - 1, Int32.Parse(words[2])));
-                sEdge = sr.ReadLine();
-            }
-
-            edges = edges.OrderBy(edge => edge.Cost).ToList();
-
-            HashSet<int> visitedNodes = new HashSet<int>();
-            //List<Edge> mstEdges = new List<Edge>();
-            int clusters = nNodes;
-            bool bClustered = false;
-            foreach (var edge in edges)
-            {
-                if (uf.GetRoot(edge.Node1) != uf.GetRoot(edge.Node2))
+                string sValue = sEdge.Trim().Replace(" ", "").Substring(0, nBits);
+                int z = Convert.ToInt32(sValue, 2);
+                if (nodes.ContainsKey(z))
                 {
-                    if (!bClustered)
-                    {
-                        uf.Merge(edge.Node1, edge.Node2);
-                        visitedNodes.Add(edge.Node1);
-                        visitedNodes.Add(edge.Node2);
-                        clusters--;
-
-                        if (clusters == nClusters)
-                            bClustered = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Max spacing Edge:" + edge.ToString());
-                        break;
-                    }
+                    duplicate++;
+                    uf.Merge(i, nodes[z]);
                 }
+                else
+                {
+                    nodes.Add(z, i);
+                }
+                sEdge = sr.ReadLine();
+                i++;
+            }
+
+           
+            int clusters = nNodes - duplicate;
+
+            foreach(var node in nodes)
+            {
+                    for (int j = 0; j < nBits; j++)
+                    {
+                        int neighbour = HammingDistanceCalculator.Flip(node.Key, j);   
+                        for (int k = 0; k < nBits; k++)
+                        {
+                            int neighbour2 = 0;
+                            if (k != j)
+                            {
+                                neighbour2 = HammingDistanceCalculator.Flip(neighbour, k);
+                            }
+                            else 
+                            {
+                                neighbour2 = neighbour;
+                            }
+
+                            if (nodes.ContainsKey(neighbour2) && (uf.GetRoot(node.Value) != uf.GetRoot(nodes[neighbour2])))
+                            {
+                                clusters--;
+                                uf.Merge(node.Value, nodes[neighbour2]);
+                            }
+                        }
+                    }
 
             }
 
-            //Console.WriteLine("MST Cost is (Weight/Length) = " + nTotalCost.ToString());
+            Console.WriteLine("NUmber of clusters is: " + clusters);
+            Console.ReadLine();
+           
         }
     }
 }
