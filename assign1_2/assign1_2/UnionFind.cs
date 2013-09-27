@@ -25,10 +25,17 @@ namespace assign1_2
         public int GetRoot(int element)
         {
             //TODO add Path compression
+            HashSet<int> nodes = new HashSet<int>();
+
             int el = element;
             while (parent[el] != el)
             {
+                nodes.Add(element);
                 el = parent[el];
+            }
+            foreach (var node in nodes)
+            {
+                parent[node] = el;
             }
 
             return el;
@@ -38,9 +45,15 @@ namespace assign1_2
         {
             //TODO add Path compression
             int el = element;
+            HashSet<int> nodes = new HashSet<int>();
             while (parent[el] != el)
             {
+                nodes.Add(element);
                 el = parent[el];
+            }
+            foreach (var node in nodes)
+            {
+                parent[node] = el;
             }
             el_rank = rank[el];
             return el;

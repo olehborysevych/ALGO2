@@ -53,33 +53,40 @@ namespace assign2_2
                 i++;
             }
 
-           
+            Console.WriteLine("Loaded");
             int clusters = nNodes - duplicate;
-
+            HashSet<int> setNodes = new HashSet<int>();
             foreach(var node in nodes)
             {
+                if (!setNodes.Contains(node.Key))
+                {
+                    setNodes.Add(node.Key);
                     for (int j = 0; j < nBits; j++)
                     {
-                        int neighbour = HammingDistanceCalculator.Flip(node.Key, j);   
-                        for (int k = 0; k < nBits; k++)
+                        int neighbour = HammingDistanceCalculator.Flip(node.Key, j);
+                        if (!setNodes.Contains(neighbour))
                         {
-                            int neighbour2 = 0;
-                            if (k != j)
+                            for (int k = j; k < nBits; k++)
                             {
-                                neighbour2 = HammingDistanceCalculator.Flip(neighbour, k);
-                            }
-                            else 
-                            {
-                                neighbour2 = neighbour;
-                            }
+                                int neighbour2 = 0;
+                                if (k != j)
+                                {
+                                    neighbour2 = HammingDistanceCalculator.Flip(neighbour, k);
+                                }
+                                else
+                                {
+                                    neighbour2 = neighbour;
+                                }
 
-                            if (nodes.ContainsKey(neighbour2) && (uf.GetRoot(node.Value) != uf.GetRoot(nodes[neighbour2])))
-                            {
-                                clusters--;
-                                uf.Merge(node.Value, nodes[neighbour2]);
+                                if (nodes.ContainsKey(neighbour2) && (uf.GetRoot(node.Value) != uf.GetRoot(nodes[neighbour2])))
+                                {
+                                    clusters--;
+                                    uf.Merge(node.Value, nodes[neighbour2]);
+                                }
                             }
                         }
                     }
+                }
 
             }
 
