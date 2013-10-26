@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assign3", "..\..\assign3\as
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assign5", "..\..\assign5\assign5\assign5.csproj", "{4862ED71-6A49-4834-932E-EC0600D8F269}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assign6", "..\..\assign6\assign6\assign6.csproj", "{476076F7-A857-43ED-A428-00004E90FD50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assign4", "..\..\assign4\assign4\assign4.csproj", "{A4B8C2C0-C5D7-4A2F-A263-2928F1DC6974}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{4862ED71-6A49-4834-932E-EC0600D8F269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4862ED71-6A49-4834-932E-EC0600D8F269}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4862ED71-6A49-4834-932E-EC0600D8F269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{476076F7-A857-43ED-A428-00004E90FD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476076F7-A857-43ED-A428-00004E90FD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476076F7-A857-43ED-A428-00004E90FD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476076F7-A857-43ED-A428-00004E90FD50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B8C2C0-C5D7-4A2F-A263-2928F1DC6974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B8C2C0-C5D7-4A2F-A263-2928F1DC6974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B8C2C0-C5D7-4A2F-A263-2928F1DC6974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B8C2C0-C5D7-4A2F-A263-2928F1DC6974}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
